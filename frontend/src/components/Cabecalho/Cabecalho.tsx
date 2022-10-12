@@ -10,7 +10,7 @@ const Cabecalho = () => {
                 <p>Encontre o professor perfeito.</p>
 
                 <footer>
-                    Dev HGO!
+                    &copy;Dev HGO!
                 </footer>
             </CabecalhoContainer>
 

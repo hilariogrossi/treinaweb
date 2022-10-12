@@ -1,14 +1,20 @@
 import { Button } from "@mui/material";
 import { Descricao, Foto, Informacoes, ItemLista, ListaStyled, Nome, Valor, ListaVazia } from "./Lista.style";
 import { Professor } from "../../@types/professor";
+import { FormatadorService } from "../../services/FormatadorService";
 
 interface ListaProps {
     professores: Professor[],
 };
 
 const Lista = (props: ListaProps) => {
+    //    const [contador, setContador] = useState(0);
+
     return (
         <div>
+            {/* <div>Contador igual: {contador}.</div>
+            <button onClick={() => setContador(contador + 1)}>Somar +1</button> */}
+
             {props.professores.length > 0 ? (
                 <ListaStyled>
                     {props.professores.map(professor => (
@@ -18,8 +24,8 @@ const Lista = (props: ListaProps) => {
 
                             <Informacoes>
                                 <Nome>{professor.nome}</Nome>
-                                <Valor>{professor.valor_hora.toLocaleString('pt-BR', { minimumFractionDigits: 2, style: 'currency', currency: 'BRL' })} por hora</Valor>
-                                <Descricao>{professor.descricao}</Descricao>
+                                <Valor>{FormatadorService.valorMonetario(professor.valor_hora)} por hora</Valor>
+                                <Descricao>{FormatadorService.limitarTexto(professor.descricao, 100)}</Descricao>
                                 <Button sx={{ width: '70%' }}>Invista em você. Marcar um horário com o {professor.nome}.</Button>
                             </Informacoes>
                         </ItemLista>
